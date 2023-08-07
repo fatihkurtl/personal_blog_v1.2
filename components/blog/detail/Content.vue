@@ -12,7 +12,7 @@ defineProps({
 });
 </script>
 
-<style>
+<style scoped>
 blockquote {
     background-color: #363535;
     border-left-color: #b7abab !important;

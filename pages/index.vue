@@ -11,18 +11,11 @@
   </div>
 </template>
 <script setup>
-import { useStorePinia } from "~/stores/myStore";
 import Profile from "~/layouts/Profile.vue";
 import About from "~/layouts/About.vue";
-import { useDark, useToggle } from "@vueuse/core";
-
-const useStore = useStorePinia();
-const isDark = useDark();
-console.log("isDark.value :>> ", isDark.value);
-
 </script>
 
-<style>
+<style scoped>
 
 
 

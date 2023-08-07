@@ -1,9 +1,6 @@
 <template>
   <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-      <!-- Start coding here -->
-      <!-- <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"> -->
-
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="pb-4 bg-white dark:bg-gray-900">
           <label for="table-search" class="sr-only">Search</label>
@@ -50,7 +47,6 @@
       </div>
       <!-- Pagination -->
     </div>
-    <!-- </div> -->
   </section>
 </template>
 
@@ -198,7 +194,6 @@ export default (await import("vue")).defineComponent({
 
     const selectedSnippet = (e) => {
       try {
-        console.log("e.target.value :>> ", e.target.value);
         snippetID.value = e.target.value;
       } catch (error) {
         console.log("error :>> ", error);
@@ -208,7 +203,6 @@ export default (await import("vue")).defineComponent({
     // const route = "api/delete/snippets";
 
     const deleteSnippet = async (id) => {
-      console.log("delete snippet id :>> ", id);
       await deleteData(id);
     };
 

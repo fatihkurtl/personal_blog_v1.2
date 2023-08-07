@@ -49,8 +49,5 @@
 </template>
 
 <script setup>
-  import { useStorePinia } from "~/stores/myStore";
-
-  const useStore = useStorePinia();
   const route = useRoute();
 </script>

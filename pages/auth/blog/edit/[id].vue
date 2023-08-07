@@ -82,10 +82,6 @@ const { baseURL } = useUtils();
 const useStore = useStorePinia();
 const route = useRoute();
 
-// console.log("route name :>> ", route.name);
-// console.log("post name :>> ", route.query.post);
-// console.log("post id :>> ", route.params.id);
-
 const postsData = reactive({
   title: null,
   subject: null,
@@ -135,13 +131,7 @@ const getPost = async () => {
     const response = await $fetch(`${baseURL()}/api/posts/${route.params.id}`, requestOptions);
 
     if (response) {
-      console.log("Response:", response);
       posts.value.push(response);
-
-      // localStorage.setItem('posts', JSON.stringify(posts.value));
-      // useStore.statusAlarmFunc(true);
-      console.log("posts.value :>> ", posts.value);
-      // useStore.statusAlarmFunc(true);
     } else {
       console.log("Error:", response);
       // useStore.statusWarningFunc(false);
@@ -188,7 +178,6 @@ const uploadPhoto = (e) => {
       return (e.target.value = null);
     }
   }
-  console.log("files :>> ", files[0]);
   postsData.file = files[0];
 };
 

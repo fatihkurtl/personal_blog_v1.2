@@ -84,13 +84,6 @@ const { baseURL } = useUtils();
 const useStore = useStorePinia();
 const route = useRoute();
 
-console.log('route.name :>> ', route.name);
-
-
-// console.log("route name :>> ", route.name);
-// console.log("post name :>> ", route.query.snippet);
-// console.log('post id :>> ', route.params.id);
-
 const snippetsData = reactive({
   title: null,
   subject: null,
@@ -132,7 +125,7 @@ const getSnippet = async () => {
     const requestOptions = {
       method: "GET",
       headers: {
-        // "Content-Type": "application/json",
+        "Content-Type": "application/json",
         // Authorization: `Token ${useStore.getAuth}`,
       },
     };
@@ -140,9 +133,7 @@ const getSnippet = async () => {
     const response = await $fetch(apiURL, requestOptions);
 
     if (response) {
-      console.log("Response :>> ", response);
       snippets.value.push(response);
-      console.log("snippets.value :>> ", snippets.value);
     } else {
       console.log("Error :>> ", response);
     }
@@ -186,7 +177,6 @@ const uploadPhoto = (e) => {
       return (e.target.value = null);
     }
   }
-  console.log("files :>> ", files[0]);
   snippetsData.file = files[0];
 };
 
@@ -206,7 +196,6 @@ const submit = async () => {
     localStorage.setItem('snippets', JSON.stringify(snippets.value));
   } catch (error) {
     console.log("error :>> ", error);
-    // useStore.statusWarningFunc(false);
   }
 };
 </script>

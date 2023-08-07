@@ -33,7 +33,6 @@
 </template>
 
 <script setup>
-import { useStorePinia } from "~/stores/myStore";
 import { ref, onMounted, onUpdated } from "vue";
 import MarkdownIt from "markdown-it";
 import { useClipboard } from '@vueuse/core';
@@ -44,11 +43,7 @@ import ReadingTime from "~/components/snippets/detail/header/ReadingTime.vue";
 import Content from "~/components/snippets/detail/Content.vue";
 
 const { baseURL } = useUtils();
-const useStore = useStorePinia();
 const route = useRoute();
-
-console.log("route.params.id :>> ", route.params.id);
-console.log("route.query.snippet :>> ", route.query.snippet);
 
 const snippets = ref([]);
 const renderedContent = ref();
@@ -63,7 +58,6 @@ const getSnippet = async () => {
     };
 
     const response = await $fetch(`${baseURL()}/api/snippets/${route.params.id}`);
-    console.log('response :>> ', response);
     const md = new MarkdownIt();
 
     if (response) {

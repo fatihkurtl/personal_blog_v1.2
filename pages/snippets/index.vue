@@ -23,18 +23,15 @@
 </template>
 
 <script setup>
-import { useStorePinia } from "~/stores/myStore";
-import { ref, onMounted, watch } from "vue";
 import Header from "~/components/snippets/index/Header.vue";
 import CardImage from "~/components/snippets/index/CardImage.vue";
 import CardContent from "~/components/snippets/index/CardContent.vue";
 import Pagination from "~/components/snippets/index/Pagination.vue";
 
 
-
 const { baseURL } = useUtils();
 
-const useStore = useStorePinia();
+
 const DEFAULT_PAGE = 1;
 const DEFAULT_PER_PAGE = 7;
 const snippets = ref([]);
@@ -54,8 +51,6 @@ async function getSnippets(page = DEFAULT_PAGE, perPage = DEFAULT_PER_PAGE) {
     totalPages.value = response.pages;
     prevUrl.value = response.prev_url;
     nextUrl.value = response.next_url;
-    console.log('response :>> ', response);
-    console.log('snippets :>> ', snippets.value.length);
   } catch (error) {
     console.log("Error fetching snippets:", error);
   }
@@ -88,4 +83,4 @@ provide('loadNextPage', loadNextPage)
 
 </script>
 
-<style></style>
+<style scoped></style>

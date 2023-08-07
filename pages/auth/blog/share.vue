@@ -76,8 +76,6 @@ definePageMeta({
 
 const useStore = useStorePinia();
 
-const route = useRoute();
-
 const postsData = reactive({
   title: null,
   subject: null,
@@ -105,7 +103,6 @@ const uploadPhoto = (e) => {
       return (e.target.value = null);
     }
   }
-  console.log("files :>> ", files[0]);
   postsData.file = files[0];
 };
 

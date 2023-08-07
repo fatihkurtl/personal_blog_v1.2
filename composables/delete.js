@@ -3,7 +3,6 @@ import { useStorePinia } from "~/stores/myStore";
 export const deleteData = async (id) => {
   const useStore = useStorePinia();
   const route = useRoute();
-  console.log("delete.js post_id:", id);
   try {
     const { baseURL } = useUtils();
     const requestOptions = {

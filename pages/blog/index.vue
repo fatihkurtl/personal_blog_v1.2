@@ -29,7 +29,6 @@
 </template>
 
 <script setup>
-import { useStorePinia } from "~/stores/myStore";
 import { ref, onMounted, watch } from "vue";
 import TotalPost from "~/components/blog/index/TotalPost.vue";
 import Header from "~/components/blog/index/Header.vue";
@@ -44,7 +43,6 @@ import Pagination from "~/components/blog/index/Pagination.vue";
 
 const { baseURL } = useUtils();
 
-const useStore = useStorePinia();
 const DEFAULT_PAGE = 1;
 const DEFAULT_PER_PAGE = 7;
 const posts = ref([]);
@@ -61,7 +59,6 @@ const searchPosts = async (e) => {
     searchQuery.value = e;
     const response = await $fetch(`${baseURL()}/api/posts?search=${searchQuery.value}`);
     if (response) {
-      console.log('response :>> ', response[0]);
       posts.value = response;
       totalPosts.value = response.length;
     } else {
@@ -129,7 +126,7 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
 body {

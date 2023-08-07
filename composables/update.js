@@ -5,8 +5,6 @@ export const updatePost = async (formData, id) => {
   const route = useRoute();
   const { baseURL } = useUtils();
   try {
-    const apiURL = `${baseURL()}/api/update/posts/${id}`;
-
     const requestOptions = {
       method: "PUT",
       body: formData,
@@ -15,7 +13,6 @@ export const updatePost = async (formData, id) => {
     const response = await $fetch(`${baseURL()}${route.name == 'auth-snippets-edit-id' ? `/api/update/snippets/${id}` : `/api/update/posts/${id}` }`, requestOptions);
 
     if (response.info == true) {
-      console.log("response :>> ", response);
       useStore.statusAlarmFunc(true);
       if (route.name == 'auth-snippets-edit-id') {
         localStorage.removeItem('snippets');
@@ -23,7 +20,6 @@ export const updatePost = async (formData, id) => {
         localStorage.removeItem('posts');
       }
     } else {
-      console.log("error :>> ", response);
       useStore.statusWarningFunc(false);
     }
   } catch (error) {

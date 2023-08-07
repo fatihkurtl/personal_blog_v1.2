@@ -39,6 +39,9 @@ export default defineNuxtConfig({
       },
     },
     server: {
+      fs: {
+        strict: false
+      },
       middlewareMode: true,
       middlewares: [
         (req, res, next) => {
@@ -100,10 +103,10 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   modules: [
     "@pinia/nuxt",
-    '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/tailwindcss',
+    "@pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
-    '@nuxtjs/color-mode',
+    "@nuxtjs/color-mode",
   ],
   googleFonts: {
     families: { "Material+Icons": true },
@@ -112,10 +115,4 @@ export default defineNuxtConfig({
     // remove the postcss option and add the build.postcss option
     postcss: { plugins: { tailwindcss: {}, autoprefixer: {} } },
   },
-  router: {
-    // remove the routeRules option and add the router.extendRoutes option
-    extendRoutes(routes, resolve) {
-      // modify the routes array as you wish
-    },
-  },
-})
+});

@@ -123,7 +123,6 @@ export default (await import("vue")).defineComponent({
           `${baseURL()}/api/posts?search=${searchQuery.value}`
         );
         if (response) {
-          console.log("response.data :>> ", response[0]);
           posts.value = response;
         } else {
           getPosts();

@@ -20,7 +20,6 @@ export const createPost = async (formData) => {
     );
 
     if (response.info == true) {
-      console.log("Response:", response);
       useStore.statusAlarmFunc(true);
     } else {
       console.log("Error:", response);

@@ -11,22 +11,23 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/color-mode": "^3.3.0",
-    "@nuxtjs/google-fonts": "^3.0.1",
+    "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "^18.16.19",
-    "@vueuse/core": "^10.2.1",
-    "@vueuse/nuxt": "^10.2.1",
+    "@types/node": "^18.17.3",
+    "@vueuse/core": "^10.3.0",
+    "@vueuse/nuxt": "^10.3.0",
     "autoprefixer": "^10.4.14",
-    "nuxt": "^3.6.3",
-    "postcss": "^8.4.26",
+    "nuxt": "^3.6.5",
+    "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "markdown-it": "^13.0.1",
-    "pinia": "^2.1.4",
-    "pinia-plugin-persistedstate": "^3.1.0"
+    "pinia": "^2.1.6",
+    "pinia-plugin-persistedstate": "^3.2.0",
+    "vue-tsc": "^1.8.8"
   }
 }

@@ -33,7 +33,6 @@
 </template>
 
 <script setup>
-import { useStorePinia } from "~/stores/myStore";
 import { ref, onMounted, onUpdated } from "vue";
 import MarkdownIt from "markdown-it";
 import { useClipboard } from '@vueuse/core';
@@ -46,9 +45,7 @@ import Views from "~/components/blog/detail/header/Views.vue";
 
 const { baseURL } = useUtils();
 
-const useStore = useStorePinia();
 const route = useRoute();
-console.log("route.params.id :>> ", route.params.id);
 
 const posts = ref([]);
 const renderedContent = ref();
