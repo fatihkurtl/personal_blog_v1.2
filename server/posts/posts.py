@@ -20,6 +20,7 @@ post_delete_api = Blueprint('post_delete_api', __name__)
 posts_update_api = Blueprint('posts_update_api', __name__)
 post_search_api = Blueprint('post_search_api', __name__)
 post_images_api = Blueprint('post_image_api', __name__)
+post_hashtags_api = Blueprint('post_hashtags_api', __name__)
 
 
 def allowed_file(filename):
@@ -324,6 +325,48 @@ def search_post():
     #     return jsonify({'message': 'Unauthorized request'}), 401
  
     posts = session.query(Posts).filter(Posts.title.like(f'%{search}%')).all()
+    if not posts:
+        return jsonify({'message': 'No Content'}), 204
+
+    posts_list = []
+    for post in posts:
+        post_dict = {
+            'id': post.id,
+            'title': post.title,
+            'subject': post.subject,
+            'image': post.image,
+            'reading_time': post.reading_time,
+            'content': post.content,
+            'create_at': post.create_at,
+            'update_at': post.update_at
+        }
+     
+    categories = [pc.category for pc in post.posts_category]
+    hashtags = [ph.hashtag for ph in post.posts_hashtags]
+     
+    post_dict["categories"] = categories
+    post_dict["hashtags"] = hashtags
+     
+    posts_list.append(post_dict)
+ 
+    return jsonify(posts_list), 200
+
+
+##### NOT WORKING #####
+@post_hashtags_api.route('/api/getHashtags/posts', methods=['GET'])
+def find_post():
+    from main import authKey, session
+    hashtags = request.args.get('hashtag', type=str)
+    
+    print('sasa', hashtags)
+ 
+    # content_type = request.headers.get('Authorization')
+    # if content_type != authKey[0]:
+    #     return jsonify({'message': 'Unauthorized request'}), 401
+ 
+    # posts = session.query(Posts).join(PostsHashtags).filter(PostsHashtags.hashtag.like(f"%{hashtags}%")).all()
+    posts = session.query(Posts).filter(PostsHashtags.hashtag.like(f'%{hashtags}%')).all()
+    print(posts)
     if not posts:
         return jsonify({'message': 'No Content'}), 204
 

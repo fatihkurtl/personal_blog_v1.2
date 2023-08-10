@@ -7,7 +7,7 @@ from auth.auth import authenticate
 
 from werkzeug.utils import secure_filename
 
-from posts.posts import post_api, post_create_api, posts_detail_api, posts_update_api, post_delete_api, post_search_api, post_images_api
+from posts.posts import post_api, post_create_api, posts_detail_api, posts_update_api, post_delete_api, post_search_api, post_images_api, post_hashtags_api
 from snippets.snippets import snippets_api, snippet_create_api, snippets_detail_api, snippet_delete_api, snippets_update_api, snippet_images_api
 from flask_cors import CORS
 
@@ -92,6 +92,8 @@ app.register_blueprint(post_delete_api)
 app.register_blueprint(post_search_api)
 
 app.register_blueprint(post_images_api)
+
+app.register_blueprint(post_hashtags_api)
 
 ##########################################
 

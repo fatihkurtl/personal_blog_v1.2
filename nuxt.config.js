@@ -66,7 +66,6 @@ export default defineNuxtConfig({
     storageKey: "nuxt-color-mode",
   },
   resolve: {
-    // remove the alias option and add the resolve option
     alias: {
       assets: "/<rootDir>/assets",
     },
@@ -112,7 +111,6 @@ export default defineNuxtConfig({
     families: { "Material+Icons": true },
   },
   build: {
-    // remove the postcss option and add the build.postcss option
     postcss: { plugins: { tailwindcss: {}, autoprefixer: {} } },
   },
 });

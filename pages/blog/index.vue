@@ -54,6 +54,8 @@ const currentPage = ref(null);
 
 const searchQuery = ref("");
 
+const findHashtagPosts = ref("");
+
 const searchPosts = async (e) => {
   try {
     searchQuery.value = e;
@@ -81,6 +83,44 @@ watch(searchQuery, (newValue, oldValue) => {
     console.log('error :>> ', error);
   }
 });
+
+
+
+// NOT WORKING
+const findHashtags = async (e) => {
+  try {
+    findHashtagPosts.value = e;
+    console.log('e :>> ', e);
+    const response = await $fetch(`${baseURL()}/api/getHashtags/posts?hashtag=${findHashtagPosts.value}`);
+    if (response) {
+      console.log('response :>> ', response);
+      posts.value = response;
+      totalPosts.value = response.length;
+      console.log('findHashtagPosts :>> ', findHashtagPosts.value);
+    } else {
+      getPosts();
+      findHashtagPosts.value = null;
+    }
+  } catch (error) {
+    console.log('error :>> ', error);
+  }
+};
+
+// NOT WORKING
+// watch(findHashtagPosts, (newValue, oldValue) => {
+//   try {
+//     if (newValue === "") {
+//       getPosts();
+//     } else {
+//       findHashtags(newValue);
+//     }
+//   } catch (error) {
+//     console.log('error :>> ', error);
+//   }
+// });
+
+
+
 
 async function getPosts(page = DEFAULT_PAGE, perPage = DEFAULT_PER_PAGE) {
   try {
@@ -120,6 +160,7 @@ provide('currentPage', currentPage);
 provide('totalPages', totalPages);
 provide('searchQuery', searchQuery);
 provide('searchPosts', searchPosts);
+provide('findHashtags', findHashtags);
 
 onMounted(() => {
   getPosts();
